@@ -10,6 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -20,20 +21,21 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class=" row min-h-screen bg-gray-100">
+        <aside class="col-md-2">
         @include('layouts.navigation')
-
-        <!-- Page Heading -->
+        </aside>
+        {{-- <!-- Page Heading -->
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{-- {{ $header }} --}}
-            </div>
-        </header>
+            {{-- </div>
+        </header> --}} 
 
         <!-- Page Content -->
-        <main>
-            {{-- {{ $slot }} --}}
-        </main>
+        <section class="col-md-10">
+            @yield('content')   
+        </section>
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
