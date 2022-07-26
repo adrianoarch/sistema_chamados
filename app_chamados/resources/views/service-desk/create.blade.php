@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-3 h-100 justify-content-center">
+<div class="container mt-3 h-100 justify-content-center text-secondary">
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-12 mt-5">
             <h1>Abertura de chamado</h1>
 
             <hr>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group mb-2">
                     <label class="form-label" for="descricao">Descrição</label>
-                    <textarea name="descricao" class="form-control" id="descricao" rows="3"></textarea>
+                    <textarea name="descricao" class="form-control" id="descricao" rows="3" placeholder="Descreva brevemente o problema"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Criar</button>
             </form>

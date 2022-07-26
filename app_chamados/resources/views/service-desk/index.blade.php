@@ -2,14 +2,12 @@
 
 @section('content')
     <div class="container mt-3">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h1 class="mt-3 text-center">Meus chamados</h1>
-                <hr>
+        <div class="row justify-content-center text-secondary">
+            <div class="col-md-8 mt-5">
                 <div class="row">
                     
                     <div class="col-md-6">
-                        <a href="{{ route('service-desk.create') }}" class="btn btn-primary btn-block">
+                        <a href="{{ route('service-desk.create') }}" class="btn btn-success btn-block">
                             <i class="bi bi-plus-circle me-2"></i>
                             Novo chamado
                         </a>
@@ -19,7 +17,7 @@
                 <div class="row mt-4">
                     <div class="col md-12">
                         @if(Session::has('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 {{ Session::get('success') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
@@ -30,9 +28,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <hr>
-                        <h3 class="mt-3 text-center">Chamados abertos</h3>
+                        <h3 class="mt-3 text-center text-light">Chamados abertos</h3>
                         <hr>
-                        <table class="table table-striped table-hover">
+                        @if(count($chamados) <= 0)
+                            <div class="alert alert-info text-center mt-1">
+                                Nenhum chamado aberto.
+                            </div>
+                        @else
+                        <table class="table text-light">
                             <thead>
                                 <tr>
                                     <th>Número</th>
@@ -41,7 +44,7 @@
                                     <th>Ações</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-light">
                                 @foreach ($chamados as $chamado)
                                     <tr>
                                         <td>{{ $chamado->id }}</td>
@@ -49,7 +52,7 @@
                                         <td>{{ $chamado->status }}</td>
                                         <td>
                                             <a href="{{ route('service-desk.show', $chamado->id) }}" class="btn btn-sm btn-primary">
-                                                <i class="material-icons-outlined">visibility</i>
+                                                <i class="bi bi-eye-fill me-1"></i>
                                                 Visualizar
                                             </a>
                                         </td>
@@ -57,6 +60,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @endif
 
                 </div>           
             </div>

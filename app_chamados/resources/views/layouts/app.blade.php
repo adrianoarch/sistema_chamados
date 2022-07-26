@@ -20,19 +20,19 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 
-<body class="font-sans antialiased vh-100 overflow-y-hidden" style="background: #22272E">
+<body class="font-sans vh-100 overflow-y-hidden m-0" style="background: #22272E">
 
     
-    <div class="row h-100 w-100" style="background: #22272E;">
-            <div class="container-fluid w-auto h-auto">
-                <div class="col-md-12 bg-dark w-100">
+    <div class="row h-100 min-vw-100 mx-0 px-0" style="background: #22272E;">
+            <div class="row h-auto w-100 mx-0 px-0">
+                <div class="col-md-12 bg-dark w-100 mx-0 px-0">
                     <h1 class="text-secondary text-center">Sistema de Chamados</h1>
                 </div>
             </div>
         
 
-        <div class="row h-100">
-            <aside class="col-md-2">
+        <div class="row h-100 mx-0 px-0">
+            <aside class="col-md-2 px-0">
                 @include('layouts.navigation')
             </aside>
         
