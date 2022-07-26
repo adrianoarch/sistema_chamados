@@ -20,22 +20,27 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 
-<body class="font-sans antialiased">
-    <div class=" row min-h-screen bg-gray-100">
-        <aside class="col-md-2">
-        @include('layouts.navigation')
-        </aside>
-        {{-- <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{-- {{ $header }} --}}
-            {{-- </div>
-        </header> --}} 
+<body class="font-sans antialiased vh-100 overflow-y-hidden" style="background: #22272E">
 
-        <!-- Page Content -->
-        <section class="col-md-10">
-            @yield('content')   
-        </section>
+    
+    <div class="row h-100 w-100" style="background: #22272E;">
+            <div class="container-fluid w-auto h-auto">
+                <div class="col-md-12 bg-dark w-100">
+                    <h1 class="text-secondary text-center">Sistema de Chamados</h1>
+                </div>
+            </div>
+        
+
+        <div class="row h-100">
+            <aside class="col-md-2">
+                @include('layouts.navigation')
+            </aside>
+        
+         <!-- Page Content -->
+            <section class="col-md-10">
+                @yield('content')   
+            </section>
+        </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

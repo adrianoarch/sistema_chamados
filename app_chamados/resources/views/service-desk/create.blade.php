@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-3">
+<div class="container mt-3 h-100 justify-content-center">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6">
             <h1>Abertura de chamado</h1>
