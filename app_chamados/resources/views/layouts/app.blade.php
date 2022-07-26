@@ -26,7 +26,7 @@
     <div class="row h-100 min-vw-100 mx-0 px-0" style="background: #22272E;">
             <div class="row h-auto w-100 mx-0 px-0">
                 <div class="col-md-12 bg-dark w-100 mx-0 px-0">
-                    <h1 class="text-secondary text-center">Sistema de Chamados</h1>
+                    <h1 class="text-secondary text-end me-3">Sistema de Chamados</h1>
                 </div>
             </div>
         

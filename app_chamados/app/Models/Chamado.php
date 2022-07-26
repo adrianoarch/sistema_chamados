@@ -18,6 +18,7 @@ class Chamado extends Model
         'tecnico_id',
         'categoria',
         'status',
+        'ip_address',
     ];
 
     public function user()

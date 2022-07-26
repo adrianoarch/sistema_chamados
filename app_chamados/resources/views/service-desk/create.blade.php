@@ -27,6 +27,10 @@
                     <label class="form-label" for="descricao">Descrição</label>
                     <textarea name="descricao" class="form-control" id="descricao" rows="3" placeholder="Descreva brevemente o problema"></textarea>
                 </div>
+                <div class="form-group mb-2">
+                    <label for="ip_address" class="form-label">IP da Máquina</label>
+                    <input type="text" name="ip_address" class="form-control" id="ip_address" placeholder="Caso aplique, coloque o endereço IP">
+                </div>
                 <button type="submit" class="btn btn-primary mt-3">Criar</button>
             </form>
 

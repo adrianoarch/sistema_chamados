@@ -53,9 +53,11 @@ class ServiceDeskController extends Controller
         $chamado->descricao = $request->descricao;
         $chamado->categoria = $request->categoria;
         $chamado->user_id = Auth::user()->id;
-        $chamado->save();     
+        $chamado->ip_address = $request->ip_address;
+        $chamado->save();
         
-        return redirect()->route('service-desk.index')->with('success', 'Chamado criado com sucesso!');
+        return redirect()->route('service-desk.index')
+        ->with('success', 'Chamado criado com sucesso! Aguarde o atendimento do técnico.');
     }
 
     public function show($id)
