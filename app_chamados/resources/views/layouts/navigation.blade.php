@@ -25,6 +25,12 @@
               <span class="fs-5">Setores</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('tecnicos.index') }}" class="nav-link text-white">
+              <span><i class="bi bi-tools me-2"></i></span>
+              <span class="fs-5">Técnicos</span>
+            </a>
+          </li>
         </ul>
     @else
     <ul class="nav nav-pills nav-fill nav-justified flex-column mb-auto d-flex justify-content-center">

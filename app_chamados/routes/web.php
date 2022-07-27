@@ -5,6 +5,7 @@ use App\Http\Controllers\{
     HomeController,
     SectorController,
     ServiceDeskController,
+    TechicianController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,14 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/sectors/{id}', [SectorController::class, 'destroy'])->name('sectors.destroy');
     Route::get('/sectors/{sector}/edit', [SectorController::class, 'edit'])->name('sectors.edit');
     Route::get('/sectors/{name}', [SectorController::class, 'show'])->name('sectors.show');
+
+    Route::get('/tecnicos', [TechicianController::class, 'index'])->name('tecnicos.index');
+    Route::get('/tecnicos/create', [TechicianController::class, 'create'])->name('tecnicos.create');
+    Route::post('/tecnicos/{id}', [TechicianController::class, 'update'])->name('tecnicos.update');
+    Route::post('/tecnicos', [TechicianController::class, 'store'])->name('tecnicos.store');
+    Route::delete('/tecnicos/{id}', [TechicianController::class, 'destroy'])->name('tecnicos.destroy');
+    Route::get('/tecnicos/{technician}/edit', [TechicianController::class, 'edit'])->name('tecnicos.edit');
+    Route::get('/tecnicos/{name}', [TechicianController::class, 'show'])->name('tecnicos.show');
     
     Route::get('/service-desk', [ServiceDeskController::class, 'index'])->name('service-desk.index');
     Route::get('/service-desk/create', [ServiceDeskController::class, 'create'])->name('service-desk.create');
