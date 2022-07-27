@@ -4,6 +4,23 @@
       <span class="fs-5">Chamados 0.1</span>
     </a>
     <hr>
+
+    @if(Auth::check() && Auth::user()->admin)
+        <ul class="nav nav-pills nav-fill nav-justified flex-column mb-auto d-flex justify-content-center">
+          <li class="nav-item">
+            <a href="{{ route('users.index') }}" class="nav-link text-white">
+              <span><i class="bi bi-people"></i></span>
+              <span class="fs-5">Usuários</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('service-desk.index') }}" class="nav-link text-white">
+              <span><i class="bi bi-ticket"></i></span>
+              <span class="fs-5">Chamados</span>
+            </a>
+          </li>
+        </ul>
+    @else
     <ul class="nav nav-pills nav-fill nav-justified flex-column mb-auto d-flex justify-content-center">
       <li class="nav-item">
         <a href="#" class="nav-link text-white" aria-current="page">
@@ -18,4 +35,6 @@
         </a>
       </li>
     </ul>
+    @endif
+    
 </div>

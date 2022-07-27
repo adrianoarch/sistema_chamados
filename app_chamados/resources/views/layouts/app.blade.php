@@ -24,9 +24,32 @@
 
     
     <div class="row h-100 min-vw-100 mx-0 px-0" style="background: #22272E;">
-            <div class="row h-auto w-100 mx-0 px-0">
+            <div class="row h-auto w-100 mx-0 px-0 d-flex" style="background">
                 <div class="col-md-12 bg-dark w-100 mx-0 px-0">
-                    <h1 class="text-secondary text-end me-3">Sistema de Chamados</h1>
+                    {{-- <h1 class="text-secondary text-end me-3">Sistema de Chamados</h1> --}}
+                    <nav class="navbar my-auto py-0" style="background: #2980b9">
+                        <div class="container-fluid d-flex py-0 my-auto">
+                            <div class="navbar-header my-auto py-0">
+                                <a class="navbar-brand d-flex" href="{{ route('home.index') }}">
+                                    <img src="{{ asset('storage/logo/logo-sudesb.png') }}" alt="logo" class="img-fluid my-0 py-0 ms-3" style="width: 20%">
+                                </a>
+                            </div>
+                            <ul class="nav navbar-nav navbar-right d-flex flex-row text-light">
+        
+                                <li class="nav-item me-2">
+                                    <a class="nav-link text-light fw-bold" href="{{ route('service-desk.index') }}">{{ Auth::user()->name }}</a>
+                                </li>
+                                <li class="nav-item me-2">
+                                    <a class="nav-link text-light fw-bold" href="{{ route('logout') }}" onclick="event.preventDefault(); 
+                                    document.getElementById('logout-form').submit();">Sair</a>
+                                    <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none">
+                                    @csrf
+                                    </form>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
             </div>
         
