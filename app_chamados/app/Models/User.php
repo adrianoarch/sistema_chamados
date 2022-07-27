@@ -45,6 +45,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getUsers(string $search = null)
+    {
+        $users = $this->where(function ($query) use ($search) {
+            if ($search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('login', 'like', "%{$search}%");
+            }
+        })
+        ->paginate(10);
+        
+        return $users;
+    }
+
+
     /**
      * The sectors that belong to the user.
      *

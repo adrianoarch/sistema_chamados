@@ -17,4 +17,17 @@ class Sector extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function getSectors(string $search = null)
+    {
+        $sectors = $this->where(function ($query) use ($search) {
+            if ($search) {
+                $query->where('name', 'like', "%{$search}%");
+            }
+        })
+        ->paginate(5);
+        
+        return $sectors;
+    }
+
 }

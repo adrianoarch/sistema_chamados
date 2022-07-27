@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Http\Requests\{
     StoreUpdatedUsersRequest,
     StoreCreatedUsersRequest,
 };
 use App\Models\Sector;
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -22,11 +22,11 @@ class UserController extends Controller
         $this->sector = $sector;
     }
 
-    public function index(User $user)
+    public function index(Request $request)
     {
-        $users = $user->all();
-        // $sectors = $sector->all();
-        // dd($users->sector->name);
+        $users = $this->user->getUsers(
+            $request->search ?? '',
+        );
         return view('users.index', compact('users'));
     }
 
@@ -67,6 +67,7 @@ class UserController extends Controller
         $user->update($request->only([
             'name',
             'password',
+            'admin',
             'sector_id',           
         ]));
         
@@ -74,6 +75,13 @@ class UserController extends Controller
         // $user->save();
         
         return redirect()->route('users.index')->with('success', 'Usuário atualizado com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findorFail($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'Usuário excluído com sucesso!');
     }
 
 }

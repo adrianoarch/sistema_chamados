@@ -9,14 +9,20 @@
         <ul class="nav nav-pills nav-fill nav-justified flex-column mb-auto d-flex justify-content-center">
           <li class="nav-item">
             <a href="{{ route('users.index') }}" class="nav-link text-white">
-              <span><i class="bi bi-people"></i></span>
+              <span><i class="bi bi-people me-2"></i></span>
               <span class="fs-5">Usuários</span>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ route('service-desk.index') }}" class="nav-link text-white">
-              <span><i class="bi bi-ticket"></i></span>
+              <span><i class="bi bi-ticket me-2"></i></span>
               <span class="fs-5">Chamados</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('sectors.index') }}" class="nav-link text-white">
+              <span><i class="bi bi-building me-2"></i></span>
+              <span class="fs-5">Setores</span>
             </a>
           </li>
         </ul>
