@@ -27,7 +27,7 @@ class ServiceDeskController extends Controller
         $this->chamado = $chamado;
     }
     
-    public function index(Auth $auth)
+    public function index(Auth $auth, User $user)
     {
         $users = $this->user->all();
         $sectors = $this->sector->all();

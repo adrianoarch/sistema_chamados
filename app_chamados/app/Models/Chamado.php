@@ -33,6 +33,9 @@ class Chamado extends Model
 
     public function scopeUserAuth($query)
     {
+        if (Auth::user()->admin == 1) {
+            return $query;
+        }
         return $query->where('user_id', Auth::user()->id);
     }
 }

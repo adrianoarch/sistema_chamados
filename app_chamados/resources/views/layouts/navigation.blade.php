@@ -35,7 +35,7 @@
     @else
     <ul class="nav nav-pills nav-fill nav-justified flex-column mb-auto d-flex justify-content-center">
       <li class="nav-item">
-        <a href="#" class="nav-link text-white" aria-current="page">
+        <a href="{{ route('usuario.show', Auth::user()->id) }}" class="nav-link text-white" aria-current="page">
           <i class="bi bi-people me-1"></i>
           Meus dados
         </a>

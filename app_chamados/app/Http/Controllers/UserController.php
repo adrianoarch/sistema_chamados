@@ -53,6 +53,13 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
+    public function showUniqueUser($id)
+    {
+        $user = $this->user->where('id', $id)->first();
+        return view('users.showUniqueUser', compact('user'));
+    }
+
+
     public function edit($login)
     {
         $user = $this->user::findorFail($login);

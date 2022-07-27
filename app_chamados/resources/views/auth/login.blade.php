@@ -17,14 +17,14 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <label class="form-label text-secondary" for="login" :value="__('Login')">Usuário</label>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <input class="form-control" id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+            <div class="mt-4 col-md-12">
+                <label for="password" :value="__('Password')"></label>
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"

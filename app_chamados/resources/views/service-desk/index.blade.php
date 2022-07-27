@@ -40,6 +40,9 @@
                                 <tr>
                                     <th>Número</th>
                                     <th>Título</th>
+                                    @if(Auth::user()->admin == 1)
+                                        <th>Usuário</th>
+                                    @endif
                                     <th>Status</th>
                                     <th>Ações</th>
                                 </tr>
@@ -49,12 +52,23 @@
                                     <tr>
                                         <td>{{ $chamado->id }}</td>
                                         <td>{{ $chamado->titulo }}</td>
+                                        @if(Auth::user()->admin == 1)
+                                            <td>{{ $chamado->user->name }}</td>
+                                        @endif
                                         <td>{{ $chamado->status }}</td>
                                         <td>
-                                            <a href="{{ route('service-desk.show', $chamado->id) }}" class="btn btn-sm btn-primary">
-                                                <i class="bi bi-eye-fill me-1"></i>
-                                                Visualizar
-                                            </a>
+                                            @if (Auth::user()->admin == 1)
+                                                <a href="{{ route('service-desk.edit', $chamado->id) }}" class="btn btn-warning me-2">
+                                                    <i class="bi bi-hand-index-thumb"></i>
+                                                </a>
+                                                <a href="{{ route('service-desk.show', $chamado->id) }}" class="btn btn-primary">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+                                                
+                                            @else
+
+                                                
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
