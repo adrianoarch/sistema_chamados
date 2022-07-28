@@ -24,7 +24,7 @@
 
             <!-- Password -->
             <div class="mt-4 col-md-12">
-                <label for="password" :value="__('Password')"></label>
+                <label class="form-label text-secondary" for="password" :value="__('Password')">Senha</label>
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"

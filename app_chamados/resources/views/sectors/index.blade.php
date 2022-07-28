@@ -12,7 +12,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <a href="{{ route('sectors.create') }}" class="btn btn-success btn-block">
+                        <a href="{{ route('sectors.create') }}" class="btn btn-success btn-sm btn-block">
                             <i class="bi bi-plus-circle me-2"></i>
                             Novo setor
                         </a>
@@ -57,5 +57,11 @@
                         </tr>
                         @endforeach
                     </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ $sectors->links('pagination::bootstrap-5') }}
+                    </div>
+                </div>
                     
 @endsection

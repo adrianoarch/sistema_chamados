@@ -5,6 +5,7 @@
     <div class="col-md-12 text-light mt-5 p-3">
         <div class="row">
             <h1 class="text-start">Chamado n.º {{$chamado->id}}</h1>
+            <h2>Aberto por: {{ $chamado->user->name }}</h2>
         </div>
         
         <div class="row mt-3">
@@ -34,7 +35,8 @@
             </div>
             <div class="col-md-6">
                 <h3>Técnico</h3>
-                @if($chamado->tecnico)
+                {{-- @dd($chamado->tecnico_id) --}}
+                @if($chamado->tecnico_id)
                     <p>{{$chamado->tecnico->name}}</p>
                 @else
                     <p>Aguardando técnico</p>

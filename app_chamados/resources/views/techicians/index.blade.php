@@ -31,7 +31,7 @@
 
                 <form action="{{ route('tecnicos.index') }}" method="GET">
                     <div class="input-group mb-3 me-1">
-                      <input type="search" class="form-control mb-3" placeholder="Buscar setor" aria-label="Buscar setor" aria-describedby="basic-addon2" name="search">
+                      <input type="search" class="form-control mb-3" placeholder="Buscar técnico" aria-label="Buscar setor" aria-describedby="basic-addon2" name="search">
                       <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit">
                           <span class="me-1">

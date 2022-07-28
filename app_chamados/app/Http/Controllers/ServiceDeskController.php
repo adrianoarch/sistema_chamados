@@ -63,6 +63,34 @@ class ServiceDeskController extends Controller
     public function show($id)
     {
         $chamado = Chamado::find($id);
-        return view('service-desk.show', compact('chamado'));
+        $user = User::find($chamado->user_id);
+        $tecnico = Tecnico::find($chamado->tecnico_id);
+        return view('service-desk.show', compact('chamado', 'user', 'tecnico'));
+    }
+
+    public function edit($id)
+    {
+        $chamado = Chamado::find($id);
+        $sectors = $this->sector->all();
+        $tecnicos = $this->tecnico->all();
+        
+        return view('service-desk.edit', compact('chamado', 'sectors', 'tecnicos'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $chamado = Chamado::findorFail($id);
+        $chamado->titulo = $request->titulo;
+        $chamado->descricao = $request->descricao;
+        $chamado->categoria = $request->categoria;
+        $chamado->user_id = Auth::user()->id;
+        $chamado->ip_address = $request->ip_address;
+        $chamado->tecnico_id = $request->tecnico_id;
+        $chamado->status = $request->status;
+        $chamado->parecer_tecnico = $request->parecer_tecnico;
+        $chamado->save();
+        
+        return redirect()->route('service-desk.index')
+        ->with('success', 'Chamado atualizado com sucesso!');
     }
 }

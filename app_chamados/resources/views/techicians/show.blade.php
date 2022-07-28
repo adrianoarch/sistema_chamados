@@ -14,22 +14,28 @@
                     <p>Criado em: {{ date('d/m/Y H:i', strtotime($techician->created_at)) }}</p>
                     <p>Última atualização: {{ date('d/m/Y H:i', strtotime($techician->updated_at)) }}</p>
                     <p>Chamados deste técnico:
-                        <table class="table table-dark">
-                            <thead>
-                                <tr>
-                                    <th>Título</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($techician->chamados as $chamado)
+                        @if(count($techician->chamados) == 0)
+                           <span class="text-danger">Nenhum chamado para este técnico</span>
+                        @else
+                            <table class="table table-dark">
+                                <thead>
                                     <tr>
-                                        <td>{{ $chamado->titulo }}</td>
-                                        <td>{{ $chamado->status }}</td>
+                                        <th>Título</th>
+                                        <th>Status</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($techician->chamados as $chamado)
+                                        <tr>
+                                            <td>{{ $chamado->titulo }}</td>
+                                            <td>{{ $chamado->status }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+
+                        
                     </p>
                 </div>
                 <div class="card-footer">
