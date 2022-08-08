@@ -42,9 +42,11 @@
                                         <div class="card mb-3">
                                             <div class="card-header text-light bg-primary">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
-                                                <h5 class="card-title">{{ $chamado->titulo }}</h5>
                                             </div>
                                             <div class="card-body">
+                                                <p class="card-text">
+                                                    Título: {{ $chamado->titulo }}
+                                                </p>
                                                 <p class="card-text">
                                                     <span class="text-secondary">
                                                         <i class="bi bi-person-fill"></i>
@@ -151,7 +153,7 @@
                                         <div class="card mb-3">
                                             <div class="card-header text-light bg-secondary">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
-                                                <h5 class="card-title">{{ $chamado->titulo }}</h5>
+                                               
                                             </div>
                                             <div class="card-body">
                                                 <p class="card-text">
