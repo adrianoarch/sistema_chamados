@@ -48,14 +48,13 @@
                 <div class="col-md-6 mb-3 mx-auto">
                     <label class="form-label" for="admin">Perfil</label>
                     <select class="form-control" id="admin" name="admin">
-                        <option value="0">Usuário</option>
-                        <option value="1">Administrador</option>
+                        <option value="0" {{ $user->admin == 0 ? 'selected' : '' }}>Usuário</option>
+                        <option value="1" {{ $user->admin == 1 ? 'selected' : '' }}>Administrador</option>
                     </select>
                 </div>
                 
                     <div class="col-md-6 mt-3 mx-auto">
                     <button type="submit" class="btn btn-primary btn-block me-2">Atualizar</button>
-                    <button type="submit" class="btn btn-secondary btn-block">Retornar</button>
-
-                </div>
+                    <a class="btn btn-secondary" href="{{ route('users.index') }}">Voltar</a>
+                    </div>
 @endsection
