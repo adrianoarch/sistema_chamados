@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-3">
         <div class="row justify-content-center text-secondary">
-            <div class="col-md-8 mt-5">
+            <div class="col-md-12 mt-5">
                 <div class="row">
                     
                     <div class="col-md-6">
@@ -35,47 +35,161 @@
                                 Nenhum chamado aberto.
                             </div>
                         @else
-                        <table class="table text-light">
-                            <thead>
-                                <tr>
-                                    <th>Número</th>
-                                    <th>Título</th>
-                                    @if(Auth::user()->admin == 1)
-                                        <th>Usuário</th>
-                                    @endif
-                                    <th>Status</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-light">
-                                @foreach ($chamados as $chamado)
-                                    <tr>
-                                        <td>{{ $chamado->id }}</td>
-                                        <td>{{ $chamado->titulo }}</td>
-                                        @if(Auth::user()->admin == 1)
-                                            <td>{{ $chamado->user->name }}</td>
-                                        @endif
-                                        <td>{{ $chamado->status }}</td>
-                                        <td>
-                                            @if (Auth::user()->admin == 1)
-                                                <a href="{{ route('service-desk.edit', $chamado->id) }}" class="btn btn-warning me-2">
-                                                    <i class="bi bi-hand-index-thumb"></i>
+                        <div class="row">
+                            @foreach ($chamados as $chamado)
+                                @if ($chamado->status == 'Aberto')
+                                    <div class="col-md-3">
+                                        <div class="card mb-3">
+                                            <div class="card-header text-light bg-primary">
+                                                <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
+                                                <h5 class="card-title">{{ $chamado->titulo }}</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text">
+                                                    <span class="text-secondary">
+                                                        <i class="bi bi-person-fill"></i>
+                                                    </span>
+                                                    Usuário: {{ $chamado->user->name }}
+                                                </p>
+                                                <p class="card-text">{{ $chamado->descricao }}</p>
+                                                <p class="card-text">
+                                                    Categoria: {{ $chamado->categoria }}
+                                                </p>
+                                                <p class="card-text">
+                                                    IP: {{ $chamado->ip_address }}
+                                                </p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-clock"></i>
+                                                        {{ $chamado->created_at->format('d/m/Y H:i:s') }}
+                                                    </small>
+                                                </p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <a href="{{ route('service-desk.show', $chamado->id) }}" class="btn btn-primary btn-block">
+                                                    <i class="bi bi-eye"></i>
+                                                    
                                                 </a>
-                                                <a href="{{ route('service-desk.show', $chamado->id) }}" class="btn btn-primary">
+                                                <a href="{{ route('service-desk.edit', $chamado->id) }}" class="btn btn-warning btn-block">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                    
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                @endif        
+                            @endforeach
+                        </div>
+                        <div class="row">
+                            <hr>
+                            <h3 class="mt-3 text-center text-light">Chamados em atendimento</h3>
+                            <hr>
+                            
+                            @if ($chamados->where('status', 'Em atendimento')->count() <= 0)
+                                <div class="alert alert-info text-center mt-1">
+                                    Nenhum chamado em atendimento.
+                                </div>                                   
+                            @endif
+
+                            @foreach ($chamados as $chamado)
+                                @if ($chamado->status == 'Em atendimento')
+                                    <div class="col-md-3">
+                                        <div class="card mb-3">
+                                            <div class="card-header text-light bg-secondary">
+                                                <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
+                                                <h5 class="card-title">{{ $chamado->titulo }}</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text">
+                                                    <span class="text-secondary">
+                                                        <i class="bi bi-person-fill"></i>
+                                                    </span>
+                                                    Usuário: {{ $chamado->user->name }}
+                                                </p>
+                                                <p class="card-text">{{ $chamado->descricao }}</p>
+                                                <p class="card-text">
+                                                    Categoria: {{ $chamado->categoria }}
+                                                </p>
+                                                <p class="card-text">
+                                                    IP: {{ $chamado->ip_address }}
+                                                </p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-clock"></i>
+                                                        {{ $chamado->created_at->format('d/m/Y H:i:s') }}
+                                                    </small>
+                                                </p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <a href="{{ route('service-desk.show', $chamado->id) }}" class="btn btn-primary btn-block">
                                                     <i class="bi bi-eye"></i>
                                                 </a>
-                                                
-                                            @else
+                                                <a href="{{ route('service-desk.edit', $chamado->id) }}" class="btn btn-warning btn-block">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                @endif        
+                            @endforeach
+                        </div>
 
-                                                
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            <hr>
+                            <h3 class="mt-3 text-center text-light">Chamados Finalizados</h3>
+                            <hr>
+                            
+                            @if ($chamados->where('status', 'Finalizado')->count() <= 0)
+                                <div class="alert alert-info text-center mt-1">
+                                    Nenhum chamado finalizado.
+                                </div>                                   
+                            @endif
+
+                            @foreach ($chamados as $chamado)
+                                @if ($chamado->status == 'Finalizado')
+                                    <div class="col-md-3">
+                                        <div class="card mb-3">
+                                            <div class="card-header text-light bg-secondary">
+                                                <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
+                                                <h5 class="card-title">{{ $chamado->titulo }}</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text">
+                                                    <span class="text-secondary">
+                                                        <i class="bi bi-person-fill"></i>
+                                                    </span>
+                                                    Usuário: {{ $chamado->user->name }}
+                                                </p>
+                                                <p class="card-text">{{ $chamado->descricao }}</p>
+                                                <p class="card-text">
+                                                    Categoria: {{ $chamado->categoria }}
+                                                </p>
+                                                <p class="card-text">
+                                                    IP: {{ $chamado->ip_address }}
+                                                </p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-clock"></i>
+                                                        {{ $chamado->created_at->format('d/m/Y H:i:s') }}
+                                                    </small>
+                                                </p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <a href="{{ route('service-desk.show', $chamado->id) }}" class="btn btn-primary btn-block">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a href="{{ route('service-desk.edit', $chamado->id) }}" class="btn btn-warning btn-block">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                @endif        
+                            @endforeach
+                        </div>
+
                         @endif
-
+                    </div>
                 </div>           
             </div>
         </div>

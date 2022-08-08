@@ -25,7 +25,7 @@
                         <select name="status" id="status" class="form-control">
                             <option value="">Selecione um status</option>
                             <option value="Aberto" {{ $chamado->status == 'Aberto' ? 'selected' : '' }}>Aberto</option>
-                            <option value="Em andamento" {{ $chamado->status == 'Em andamento' ? 'selected' : '' }}>Em andamento</option>
+                            <option value="Em atendimento" {{ $chamado->status == 'Em atendimento' ? 'selected' : '' }}>Em atendimento</option>
                             <option value="Resolvido" {{ $chamado->status == 'Resolvido' ? 'selected' : '' }}>Resolvido</option>
                             <option value="Fechado" {{ $chamado->status == 'Fechado' ? 'selected' : '' }}>Fechado</option>
                         </select>

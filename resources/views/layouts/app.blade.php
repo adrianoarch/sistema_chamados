@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 
-<body class="font-sans vh-100 overflow-y-hidden m-0" style="background: #22272E">
+<body class="font-sans vh-100 overflow-x-hidden m-0" style="background: #22272E">
 
     
     <div class="row h-100 min-vw-100 mx-0 px-0" style="background: #22272E;">
