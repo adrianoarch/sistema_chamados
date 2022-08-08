@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="{{'storage/logo/logo-sudesb.png'}}" class="mx-auto" alt="Logo Sudesb" style="width: 50%">
             </a>
         </x-slot>
 
@@ -38,6 +38,7 @@
                 <x-label for="sector_id" :value="__('Setor')" />
 
                <select name="sector_id" id="sector_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-100">
+                    <option value="">Selecione um setor</option>
                     @foreach($sectors as $sector)
                         <option value="{{ $sector->id }}">{{ $sector->name }}</option>
                     @endforeach

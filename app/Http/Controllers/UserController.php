@@ -70,13 +70,22 @@ class UserController extends Controller
     public function update(StoreUpdatedUsersRequest $request, $id)
     {
         $user = User::findorFail($id);
-        $user['password'] = bcrypt($request->password);
-        $user->update($request->only([
-            'name',
-            'password',
-            'admin',
-            'sector_id',           
-        ]));
+
+        $data = $request->only('name', 'password', 'sector_id');
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $data['admin'] = $request->admin;
+
+        $user->update($data);
+        // $user['password'] = bcrypt($request->password);
+        // $user->update($request->only([
+        //     'name',
+        //     'password',
+        //     'sector_id',           
+        //     'admin',
+        // ]));
         
         // $user->sector()->associate($request->sector_id);
         // $user->save();

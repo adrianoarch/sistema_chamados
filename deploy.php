@@ -22,8 +22,8 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('localhost')
-    ->set('deploy_path', '/srv/http');    
+host('10.46.12.12')
+    ->set('deploy_path', '/usr/share/nginx/html');    
     
 // Tasks
 

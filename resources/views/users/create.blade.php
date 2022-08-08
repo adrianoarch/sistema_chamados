@@ -35,6 +35,13 @@
                         @endforeach
                     </select>
                 </div>
+                {{-- <div class="col-md-6 mb-3 mx-auto">
+                    <label class="form-label" for="admin">Perfil</label>
+                    <select class="form-control" id="admin" name="admin">
+                        <option value="0">Usuário</option>
+                        <option value="1">Administrador</option>
+                    </select>
+                </div> --}}
                 <div class="col-md-6 mt-3 mx-auto">
                     <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                 </div>
