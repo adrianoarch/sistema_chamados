@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/service-desk', [ServiceDeskController::class, 'index'])->name('service-desk.index');
     Route::get('/service-desk/create', [ServiceDeskController::class, 'create'])->name('service-desk.create');
     Route::post('/service-desk', [ServiceDeskController::class, 'store'])->name('service-desk.store');
+    Route::get('/service-desk/finalizados', [ServiceDeskController::class, 'closeds'])->name('service-desk.closeds');
     Route::get('/service-desk/{chamado}', [ServiceDeskController::class, 'show'])->name('service-desk.show');
 
     Route::get('/usuario/{id}', [UserController::class, 'showUniqueUser'])->name('usuario.show');

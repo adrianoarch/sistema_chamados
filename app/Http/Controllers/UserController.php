@@ -72,7 +72,8 @@ class UserController extends Controller
     {
         $user = User::findorFail($id);
 
-        $data = $request->only('name', 'password', 'sector_id');
+        $data['name'] = $request->name;
+        $data['sector_id'] = $request->sector_id;
         if ($request->has('password')) {
             $data['password'] = Hash::make($request->password);
         }
