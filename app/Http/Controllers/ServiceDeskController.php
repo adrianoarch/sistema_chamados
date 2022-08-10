@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Requests\StoreUpdatedServiceDeskRequest;
 use Illuminate\Http\Request;
 use App\Models\{
     User,
@@ -77,7 +77,7 @@ class ServiceDeskController extends Controller
         return view('service-desk.edit', compact('chamado', 'sectors', 'tecnicos'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreUpdatedServiceDeskRequest $request, $id)
     {
         $chamado = Chamado::findorFail($id);
         $chamado->titulo = $request->titulo;

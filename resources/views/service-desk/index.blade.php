@@ -5,7 +5,39 @@
         <div class="row justify-content-center text-secondary">
             <div class="col-md-12 mt-5">
                 <div class="row">
-                    
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-primary">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark fw-bold">{{ count($chamados->where('status', 'Aberto')) }}</h5>
+                                <p class="card-text text-dark">Chamado(s) aberto(s)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-warning">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark fw-bold">{{ count($chamados->where('status', 'Em atendimento')) }}</h5>
+                                <p class="card-text text-dark">Chamado(s) em atendimento</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-success">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark fw-bold">{{ count($chamados->where('status', 'Resolvido')) }}</h5>
+                                <p class="card-text text-dark">Chamado(s) resolvido(s)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-secondary">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark fw-bold">{{ count($chamados->where('status', 'Fechado')) }}</h5>
+                                <p class="card-text text-dark">Chamado(s) fechado(s)</p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row mt-3">
                     <div class="col-md-6">
                         <a href="{{ route('service-desk.create') }}" class="btn btn-success btn-block">
                             <i class="bi bi-plus-circle me-2"></i>
@@ -28,7 +60,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <hr>
-                        <h3 class="mt-3 text-center text-light">Chamados abertos</h3>
+                        <h3 class="mt-3 text-center text-primary">Chamados abertos</h3>
                         <hr>
                         @if(count($chamados) <= 0)
                             <div class="alert alert-info text-center mt-1">
@@ -39,7 +71,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Aberto')
                                     <div class="col-md-3">
-                                        <div class="card mb-3">
+                                        <div class="card mb-3" style="min-height: 28rem">
                                             <div class="card-header text-light bg-primary">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                             </div>
@@ -115,10 +147,19 @@
                                                 <p class="card-text">
                                                     IP: {{ $chamado->ip_address }}
                                                 </p>
+                                                <p class="card-text fw-bold">
+                                                    Técnico: {{ $chamado->tecnico->name }}
+                                                </p>
                                                 <p class="card-text">
                                                     <small class="text-muted">
                                                         <i class="bi bi-clock"></i>
-                                                        {{ $chamado->created_at->format('d/m/Y H:i:s') }}
+                                                        Criado em: {{ $chamado->created_at->format('d/m/Y H:i:s') }}
+                                                    </small>
+                                                </p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-clock"></i>
+                                                        Atualização: {{ $chamado->updated_at->format('d/m/Y H:i:s') }}
                                                     </small>
                                                 </p>
                                             </div>
@@ -138,7 +179,7 @@
 
                         <div class="row">
                             <hr>
-                            <h3 class="mt-3 text-center text-light">Chamados Resolvidos</h3>
+                            <h3 class="mt-3 text-center text-success">Chamados Resolvidos</h3>
                             <hr>
                             
                             @if ($chamados->where('status', 'Resolvido')->count() <= 0)
@@ -150,7 +191,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Resolvido')
                                     <div class="col-md-3">
-                                        <div class="card mb-3" style="min-height: 24rem">
+                                        <div class="card mb-3" style="min-height: 28rem">
                                             <div class="card-header text-light bg-success">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                                
@@ -169,12 +210,20 @@
                                                 <p class="card-text">
                                                     IP: {{ $chamado->ip_address }}
                                                 </p>
+                                                <p class="card-text fw-bold">
+                                                    Técnico: {{ $chamado->tecnico->name }}
+                                                </p>
                                                 <p class="card-text">
                                                     <small class="text-muted">
                                                         <i class="bi bi-clock"></i>
-                                                        {{ $chamado->created_at->format('d/m/Y H:i:s') }}
+                                                        Criado em: {{ $chamado->created_at->format('d/m/Y H:i:s') }}
                                                     </small>
                                                 </p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-clock"></i>
+                                                        Atualização: {{ $chamado->updated_at->format('d/m/Y H:i:s') }}
+                                                    </small>
                                             </div>
                                             <div class="card-footer">
                                                 <a href="{{ route('service-desk.show', $chamado->id) }}" class="btn btn-primary btn-block">
