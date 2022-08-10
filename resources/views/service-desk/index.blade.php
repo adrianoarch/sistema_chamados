@@ -4,6 +4,7 @@
     <div class="container mt-3">
         <div class="row justify-content-center text-secondary">
             <div class="col-md-12 mt-5">
+                @if (Auth::check() && Auth::user()->admin)
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <div class="card bg-primary">
@@ -30,18 +31,27 @@
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <div class="card bg-secondary">
-                            <div class="card-body">
-                                <h5 class="card-title text-dark fw-bold">{{ count($chamados->where('status', 'Fechado')) }}</h5>
-                                <p class="card-text text-dark">Chamado(s) fechado(s)</p>
+                       <a href="{{ route('service-desk.closeds') }}" class="streched-link text-decoration-none">
+                            <div class="card bg-secondary">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark fw-bold">{{ count($chamados->where('status', 'Fechado')) }}</h5>
+                                    <p class="card-text text-dark">Chamado(s) fechado(s)</p>
+                                </div>
                             </div>
-                        </div>
+                       </a>
                     </div>
+                </div>
+                @endif
+                    
                 <div class="row mt-3">
                     <div class="col-md-6">
-                        <a href="{{ route('service-desk.create') }}" class="btn btn-success btn-block">
+                        <a href="{{ route('service-desk.create') }}" class="btn btn-success me-2">
                             <i class="bi bi-plus-circle me-2"></i>
                             Novo chamado
+                        </a>
+                        <a href="{{ route('service-desk.closeds') }}" class="btn btn-secondary">
+                            <i class="bi bi-door-closed"></i>
+                            Ver chamados fechados
                         </a>
                     </div>
                 </div>
@@ -71,7 +81,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Aberto')
                                     <div class="col-md-3">
-                                        <div class="card mb-3" style="min-height: 28rem">
+                                        <div class="card mb-3 border-primary" style="min-height: 28rem">
                                             <div class="card-header text-light bg-primary">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                             </div>
@@ -128,7 +138,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Em atendimento')
                                     <div class="col-md-3">
-                                        <div class="card mb-3" style="min-height: 28rem">
+                                        <div class="card mb-3 border-secondary" style="min-height: 28rem">
                                             <div class="card-header text-light bg-secondary">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                                 <h5 class="card-title">{{ $chamado->titulo }}</h5>
@@ -191,7 +201,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Resolvido')
                                     <div class="col-md-3">
-                                        <div class="card mb-3" style="min-height: 28rem">
+                                        <div class="card mb-3 border-success" style="min-height: 28rem">
                                             <div class="card-header text-light bg-success">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                                

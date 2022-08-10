@@ -93,4 +93,13 @@ class ServiceDeskController extends Controller
         return redirect()->route('service-desk.index')
         ->with('success', 'Chamado atualizado com sucesso!');
     }
+
+    public function closeds(User $user)
+    {
+        $chamados = Chamado::where('status', '=', 'Fechado')->get();
+        // dd($chamados);
+        $tecnicos = $this->tecnico->all();
+        $user = User::find(Auth::user()->id);
+        return view('service-desk.closeds', compact('chamados', 'tecnicos'));
+    }
 }
