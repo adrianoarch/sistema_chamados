@@ -41,7 +41,7 @@
                             for="sector_id">Setor</label>
                     <select class="form-control" id="sector_id" name="sector_id">
                         @foreach($sectors as $sector)
-                            <option value="{{ $sector->id }}">{{ $sector->name }}</option>
+                            <option value="{{$sector->id}}" {{$sector->id == $user->sector_id ? 'selected' : ''}}>{{$sector->name}}</option>
                         @endforeach
                     </select>
                 </div>

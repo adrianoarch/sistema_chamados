@@ -4,13 +4,24 @@
 
     <div class="container mt-3 h-100 justify-content-center text-secondary">
         <div class="row align-items-center">
+            <h1 class="text-center text-light">Atendimento do chamado {{ $chamado->id }}</h1>
+            @if ($errors->any())
+                <div class="col-md-11">
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>* {{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
             <div class="col-md-6 mt-3">
-                <h1 class="text-center">Atendimento do chamado {{ $chamado->id }}</h1>
                 <h3>Aberto por: {{ $chamado->user->name }}</h3>
                 <hr>
             </div>
             <div class="col-md-6 mb-2">
-                <h3 class="text-center">Opções para o técnico</h3>
+                <h3 class="text-center text-warning">Opções para o técnico:</h3>
             </div>
             
             <div class="col-md-6 mb-2">
@@ -43,7 +54,7 @@
 
                     <div class="col-md-4 mb-2 mx-auto">
                         <label class="form-label" for="tecnico_id">Técnico</label>
-                        <select name="tecnico_id" id="tecnico_id" class="form-control">
+                        <select name="tecnico_id" id="tecnico_id" class="form-control" required>
                             @if ($chamado->tecnico)
                                 <option value="{{ $chamado->tecnico->id }}">{{ $chamado->tecnico->name }}</option>
                             @else
@@ -57,7 +68,7 @@
                     
                     <div class="col-md-6 mb-2">
                         <label class="form-label" for="descricao">Descrição</label>
-                        <textarea name="descricao" class="form-control" id="descricao" rows="3" placeholder="Descreva brevemente o problema">{{ $chamado->descricao }}</textarea>
+                        <textarea name="descricao" class="form-control" id="descricao" rows="3" placeholder="Descreva brevemente o problema" required>{{ $chamado->descricao }}</textarea>
                     </div>
 
                     <div class="col-md-4 mb-2 mx-auto">
