@@ -96,7 +96,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Em atendimento')
                                     <div class="col-md-3">
-                                        <div class="card mb-3">
+                                        <div class="card mb-3" style="min-height: 28rem">
                                             <div class="card-header text-light bg-secondary">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                                 <h5 class="card-title">{{ $chamado->titulo }}</h5>
@@ -138,20 +138,20 @@
 
                         <div class="row">
                             <hr>
-                            <h3 class="mt-3 text-center text-light">Chamados Finalizados</h3>
+                            <h3 class="mt-3 text-center text-light">Chamados Resolvidos</h3>
                             <hr>
                             
-                            @if ($chamados->where('status', 'Finalizado')->count() <= 0)
+                            @if ($chamados->where('status', 'Resolvido')->count() <= 0)
                                 <div class="alert alert-info text-center mt-1">
-                                    Nenhum chamado finalizado.
+                                    Nenhum chamado resolvido.
                                 </div>                                   
                             @endif
 
                             @foreach ($chamados as $chamado)
-                                @if ($chamado->status == 'Finalizado')
+                                @if ($chamado->status == 'Resolvido')
                                     <div class="col-md-3">
-                                        <div class="card mb-3">
-                                            <div class="card-header text-light bg-secondary">
+                                        <div class="card mb-3" style="min-height: 24rem">
+                                            <div class="card-header text-light bg-success">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                                
                                             </div>
