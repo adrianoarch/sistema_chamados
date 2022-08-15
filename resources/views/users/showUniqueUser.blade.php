@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-footer">
                     <a href="{{ route('users.index') }}" class="btn btn-primary me-2">Voltar</a>
-                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning me-2">Editar</a>
+                    {{-- <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning me-2">Editar</a> --}}
                 </div>
             </div>
         </div>
