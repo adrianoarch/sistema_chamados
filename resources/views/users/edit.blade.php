@@ -30,11 +30,11 @@
                 </div>
                 <div class="col-md-6 mb-3 mx-auto">
                     <label class="form-label" for="password">Senha</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Senha" value="{{$user->password}}">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Senha" value="">
                 </div>
                 <div class="col-md-6 mb-3 mx-auto">
                     <label class="form-label" for="password_confirmation">Confirmar senha</label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirmar senha" value="{{$user->password}}">
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirmar senha" value="">
                 </div>
                 <div class="col-md-6 mb-3 mx-auto">
                     <label class="form-label"

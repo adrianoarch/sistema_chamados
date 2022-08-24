@@ -5,7 +5,12 @@
                 <img src="{{'storage/logo/logo-sudesb.png'}}" class="mx-auto" alt="Logo Sudesb" style="width: 50%">
             </a>
         </x-slot>
-
+        <div>
+            <h1 class="text-center">
+                <strong>
+                    <h1 class="fs-3">Bem vindo ao Sistema de Chamados</h1>
+                </strong>
+        </div>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
