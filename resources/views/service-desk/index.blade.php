@@ -78,6 +78,11 @@
                             </div>
                         @else
                         <div class="row">
+                            @if ($chamados->where('status', 'Aberto')->count() <= 0)
+                                <div class="alert alert-info text-center mt-1">
+                                    Nenhum chamado aberto.
+                                </div>
+                            @endif
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Aberto')
                                     <div class="col-md-3">
