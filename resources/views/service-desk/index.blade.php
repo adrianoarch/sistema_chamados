@@ -81,7 +81,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Aberto')
                                     <div class="col-md-3">
-                                        <div class="card mb-3 border-primary" style="min-height: 28rem">
+                                        <div class="card mb-3 border-primary" style="min-height: 32rem">
                                             <div class="card-header text-light bg-primary">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                             </div>
@@ -138,7 +138,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Em atendimento')
                                     <div class="col-md-3">
-                                        <div class="card mb-3 border-secondary" style="min-height: 28rem">
+                                        <div class="card mb-3 border-secondary" style="height: 32rem">
                                             <div class="card-header text-light bg-secondary">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                                 <h5 class="card-title">{{ $chamado->titulo }}</h5>
@@ -201,7 +201,7 @@
                             @foreach ($chamados as $chamado)
                                 @if ($chamado->status == 'Resolvido')
                                     <div class="col-md-3">
-                                        <div class="card mb-3 border-success" style="min-height: 28rem">
+                                        <div class="card mb-3 border-success" style="height: 32rem">
                                             <div class="card-header text-light bg-success">
                                                 <h5 class="card-title text-center">Chamado nº {{ $chamado->id }}</h5>
                                                

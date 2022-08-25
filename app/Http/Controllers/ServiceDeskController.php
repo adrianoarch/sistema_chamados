@@ -12,6 +12,7 @@ use App\Models\{
 };
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\notificaChamadoUser;
+use Illuminate\Support\Facades\Notification;
 
 class ServiceDeskController extends Controller
 {
@@ -57,9 +58,7 @@ class ServiceDeskController extends Controller
         $chamado->ip_address = $request->ip_address;
         $chamado->save();
 
-        $user = $this->user->find(Auth::user()->id);
-
-        $chamado->notify(new notificaChamadoUser($user));
+        $chamado->notify(new notificaChamadoUser(Auth::user(), $chamado));
         
         return redirect()->route('service-desk.index')
         ->with('success', 'Chamado criado com sucesso! Aguarde o atendimento do técnico.');

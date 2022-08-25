@@ -39,4 +39,9 @@ class Chamado extends Model
         }
         return $query->where('user_id', Auth::user()->id);
     }
+
+    public function routeNotificationForMail($notification)
+    {
+        return $this->user->email;
+    }
 }
