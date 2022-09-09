@@ -44,4 +44,22 @@ class Chamado extends Model
     {
         return $this->user->email;
     }
+
+    public function getChamados(string $search = null)
+    {
+            
+        $chamados = $this->get();
+        
+        if ($search) {
+            $chamados = $this->where('status', '!=', 'Fechado')->where(function ($query) use ($search) {
+                $query->with(['user', 'tecnico'])
+                    ->where('descricao', 'LIKE', "%$search%")
+                    ->orWhere('titulo', 'LIKE', "%$search%")
+                    ->orWhere('categoria', 'LIKE', "%$search%")
+                    ->orWhere('parecer_tecnico', 'LIKE', "%$search%")
+                    ;
+            })->get();
+        }
+        return $chamados;
+    }   
 }

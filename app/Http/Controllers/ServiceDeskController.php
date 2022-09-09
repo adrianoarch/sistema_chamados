@@ -29,14 +29,15 @@ class ServiceDeskController extends Controller
         $this->chamado = $chamado;
     }
     
-    public function index(Auth $auth, User $user)
+    public function index(Auth $auth, User $user, Request $request)
     {
         $users = $this->user->all();
         $sectors = $this->sector->all();
         $tecnicos = $this->tecnico->all();
-        $chamados = Chamado::UserAuth()->get();
+        $chamados = $this->chamado->getChamados($request->search ?? '');
         
         // dd(Auth::user()->id);
+        // dd($request->all());
         return view('service-desk.index', compact('users', 'sectors', 'tecnicos', 'chamados'));
     }
     

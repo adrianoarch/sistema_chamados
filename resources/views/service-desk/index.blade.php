@@ -54,6 +54,16 @@
                             Ver chamados fechados
                         </a>
                     </div>
+                    <div class="col-md-6">
+                        <form action="{{ route('service-desk.index') }}" method="GET" class="form-inline float-right">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" aria-describedby="button-addon1" placeholder="Pesquisar chamados...">
+                                <button type="submit" class="btn btn-primary" id="button-addon1">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="row mt-4">
