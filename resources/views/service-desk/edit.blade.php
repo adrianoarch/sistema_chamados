@@ -34,18 +34,21 @@
                     <div class="col-md-4 mb-2 mx-auto">
                         <label class="form-label" for="status">Status</label>
                         <select name="status" id="status" class="form-control">
+                            @if($chamado->status)
+                                <option value="{{ $chamado->status }}">{{ $chamado->status }}</option>
+                            @else
                             <option value="">Selecione um status</option>
-                            <option value="Aberto" {{ $chamado->status == 'Aberto' ? 'selected' : '' }}>Aberto</option>
-                            <option value="Em atendimento" {{ $chamado->status == 'Em atendimento' ? 'selected' : '' }}>Em atendimento</option>
-                            <option value="Resolvido" {{ $chamado->status == 'Resolvido' ? 'selected' : '' }}>Resolvido</option>
-                            <option value="Fechado" {{ $chamado->status == 'Fechado' ? 'selected' : '' }}>Fechado</option>
+                            @endif
+                            <option value="Aberto" {{ old('status') == 'Aberto' ? 'selected' : '' }}>Aberto</option>
+                            <option value="Em atendimento" {{ old('status') == 'Em atendimento' ? 'selected' : '' }}>Em atendimento</option>
+                            <option value="Resolvido" {{ old('status') == 'Resolvido' ? 'selected' : '' }}>Resolvido</option>
+                            <option value="Fechado" {{ old('status') == 'Fechado' ? 'selected' : '' }}>Fechado</option>
                         </select>
                     </div>
                      
                     <div class="col-md-6 mb-2">
                         <label class="form-label" for="categoria">Categoria</label>
                         <select name="categoria" id="categoria" class="form-control">
-                            <option value="">Selecione uma categoria</option>
                             <option value="Impressoras" {{ $chamado->categoria == 'Impressoras' ? 'selected' : '' }}>Impressoras</option>
                             <option value="Computadores" {{ $chamado->categoria == 'Computadores' ? 'selected' : '' }}>Computadores</option>
                             <option value="Outros" {{ $chamado->categoria == 'Outros' ? 'selected' : '' }}>Outros</option>
@@ -61,7 +64,7 @@
                                 <option value="">Nenhum técnico atribuído</option>                               
                             @endif
                             @foreach($tecnicos as $tecnico)
-                                <option value="{{ $tecnico->id }}" {{ $chamado->tecnico_id == $tecnico->id ? 'selected' : '' }}>{{ $tecnico->name }}</option>
+                                <option value="{{ $tecnico->id }}" {{ old('tecnico_id') == $tecnico->id ? 'selected' : '' }}>{{ $tecnico->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -73,8 +76,7 @@
 
                     <div class="col-md-4 mb-2 mx-auto">
                         <label class="form-label" for="parecer_tecnico">Parecer técnico atual</label>
-                        <textarea rows="3" name="parecer_tecnico" class="form-control" id="parecer_tecnico" value="">{{ $chamado->parecer_tecnico }}
-</textarea>
+                        <textarea rows="3" name="parecer_tecnico" class="form-control" id="parecer_tecnico" placeholder="Digite o status atual do atendimento e/ou a solução do problema">{{ old('parecer_tecnico') }}</textarea>
                     </div>
 
                     <div class="col-md-4 mb-2">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdatedServiceDeskRequest;
+use App\Http\Requests\StoreServiceDeskRequest;
 use Illuminate\Http\Request;
 use App\Models\{
     User,
@@ -46,10 +47,11 @@ class ServiceDeskController extends Controller
         $sectors = $this->sector->all();
         $tecnicos = $this->tecnico->all();
         
+        
         return view('service-desk.create', compact('sectors', 'tecnicos'));
     }
 
-    public function store(Request $request)
+    public function store(StoreServiceDeskRequest $request)
     {
         $chamado = new Chamado();
         $chamado->titulo = $request->titulo;
