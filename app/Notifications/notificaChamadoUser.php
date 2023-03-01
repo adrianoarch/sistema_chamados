@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-class notificaChamadoUser extends Notification
+class notificaChamadoUser extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -54,7 +54,7 @@ class notificaChamadoUser extends Notification
         return (new MailMessage)
                     ->greeting('Olá! ' . $this->user->name)
                     ->subject('Chamado aberto Sudesb')
-                    ->line('O chamado ' . $this->chamado->titulo . ' foi aberto por ' . Auth::user()->name . ' e registrado no sistema com o número ' . $this->chamado->id)
+                    ->line('O chamado ' . $this->chamado->titulo . ' foi aberto por ' . 'Teste' . ' e registrado no sistema com o número ' . $this->chamado->id)
                     ->line('Para visualizar o chamado, clique no botão abaixo.')
                     ->action('Entrar no sistema', url('/'))
                     ->line('Muito obrigado por abrir o chamado utilizando nosso sistema!');

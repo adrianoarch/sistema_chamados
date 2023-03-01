@@ -63,6 +63,7 @@ class ServiceDeskController extends Controller
         $chamado->notify(new notificaChamadoUser(Auth::user(), $chamado));
         // Queue::push(new notificaChamadoUser(Auth::user(), $chamado));
         
+
         return redirect()->route('service-desk.index')
         ->with('success', 'Chamado criado com sucesso! Aguarde o atendimento do técnico.');
     }

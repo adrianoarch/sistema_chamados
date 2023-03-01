@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\notificaChamadoUser;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-
-class Chamado extends Model
+class Chamado extends Model implements ShouldQueue
 {
     use HasFactory, Notifiable;
 
@@ -76,6 +77,11 @@ class Chamado extends Model
         $chamados = $query->get();
 
         return $chamados;
+    }
+
+    public function sendNotification()
+    {
+        $this->notify(new notificaChamadoUser($this->user, $this));
     }
     
 }
