@@ -30,7 +30,7 @@ class notificaChamadoUser extends Notification
         $this->user = $user;
         $this->chamado = $chamado;
     }
-    
+
 
     /**
      * Get the notification's delivery channels.
@@ -54,10 +54,10 @@ class notificaChamadoUser extends Notification
         return (new MailMessage)
                     ->greeting('Olá! ' . $this->user->name)
                     ->subject('Chamado aberto Sudesb')
-                    ->line('O chamado ' . $this->chamado->titulo . ' foi aberto por ' . Auth::user()->name . 'e registrado no sistema com o número ' . $this->chamado->id)
+                    ->line('O chamado ' . $this->chamado->titulo . ' foi aberto por ' . Auth::user()->name . ' e registrado no sistema com o número ' . $this->chamado->id)
                     ->line('Para visualizar o chamado, clique no botão abaixo.')
                     ->action('Entrar no sistema', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Muito obrigado por abrir o chamado utilizando nosso sistema!');
     }
 
     /**

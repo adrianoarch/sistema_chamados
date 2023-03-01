@@ -14,6 +14,7 @@ use App\Models\{
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\notificaChamadoUser;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Queue;
 
 class ServiceDeskController extends Controller
 {
@@ -35,7 +36,7 @@ class ServiceDeskController extends Controller
         $users = $this->user->all();
         $sectors = $this->sector->all();
         $tecnicos = $this->tecnico->all();
-        $chamados = $this->chamado->getChamados($user, $request->search ?? '');
+        $chamados = $this->chamado->getChamados(auth()->user(), $request->search ?? '');
   
         return view('service-desk.index', compact('users', 'sectors', 'tecnicos', 'chamados'));
     }
@@ -60,6 +61,7 @@ class ServiceDeskController extends Controller
         $chamado->save();
 
         $chamado->notify(new notificaChamadoUser(Auth::user(), $chamado));
+        // Queue::push(new notificaChamadoUser(Auth::user(), $chamado));
         
         return redirect()->route('service-desk.index')
         ->with('success', 'Chamado criado com sucesso! Aguarde o atendimento do técnico.');

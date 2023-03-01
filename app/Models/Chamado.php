@@ -52,9 +52,14 @@ class Chamado extends Model
 
     public function getChamados($user, string $search = null)
     {
-        $query = $this->ofUser($user);
-            
-        // $chamados = $this->get();
+        $query = $this->newQuery();
+
+        if ($user->admin == 1) {
+            $query = $query->where('id', '!=', '0');
+        } else {
+            $query = $this->ofUser($user);
+        }
+        // dd($user);
         
         if ($search) {
             $query = $query->where('status', '!=', 'Fechado')
@@ -71,5 +76,6 @@ class Chamado extends Model
         $chamados = $query->get();
 
         return $chamados;
-    }   
+    }
+    
 }

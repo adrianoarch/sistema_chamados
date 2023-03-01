@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+// use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Channels\MailChannel;
+use Illuminate\Support\Facades\Notification;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // 
     }
 }
