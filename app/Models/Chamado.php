@@ -40,26 +40,36 @@ class Chamado extends Model
         return $query->where('user_id', Auth::user()->id);
     }
 
+    public function scopeOfUser($query, $user)
+    {
+        return $query->where('user_id', $user->id);
+    }
+
     public function routeNotificationForMail($notification)
     {
         return $this->user->email;
     }
 
-    public function getChamados(string $search = null)
+    public function getChamados($user, string $search = null)
     {
+        $query = $this->ofUser($user);
             
-        $chamados = $this->get();
+        // $chamados = $this->get();
         
         if ($search) {
-            $chamados = $this->where('status', '!=', 'Fechado')->where(function ($query) use ($search) {
-                $query->with(['user', 'tecnico'])
+            $query = $query->where('status', '!=', 'Fechado')
+            ->where(function ($q) use ($search) {
+                $q->with(['user', 'tecnico'])
                     ->where('descricao', 'LIKE', "%$search%")
                     ->orWhere('titulo', 'LIKE', "%$search%")
                     ->orWhere('categoria', 'LIKE', "%$search%")
                     ->orWhere('parecer_tecnico', 'LIKE', "%$search%")
                     ;
-            })->get();
+            });
         }
+
+        $chamados = $query->get();
+
         return $chamados;
     }   
 }

@@ -35,10 +35,8 @@ class ServiceDeskController extends Controller
         $users = $this->user->all();
         $sectors = $this->sector->all();
         $tecnicos = $this->tecnico->all();
-        $chamados = $this->chamado->getChamados($request->search ?? '');
-        
-        // dd(Auth::user()->id);
-        // dd($request->all());
+        $chamados = $this->chamado->getChamados($user, $request->search ?? '');
+  
         return view('service-desk.index', compact('users', 'sectors', 'tecnicos', 'chamados'));
     }
     
