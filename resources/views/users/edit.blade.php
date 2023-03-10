@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-6 mb-3 mx-auto">
                     <label class="form-label" for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{$user->email}}" disabled>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{$user->email}}">
                 </div>
                 <div class="col-md-6 mb-3 mx-auto">
                     <label class="form-label" for="password">Senha</label>

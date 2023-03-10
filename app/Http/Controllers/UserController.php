@@ -74,6 +74,7 @@ class UserController extends Controller
 
         $data['name'] = $request->name;
         $data['sector_id'] = $request->sector_id;
+        $data['email'] = $request->email;
         if ($request->has('password')) {
             $data['password'] = Hash::make($request->password);
         }
