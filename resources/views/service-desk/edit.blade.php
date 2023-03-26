@@ -76,7 +76,7 @@
 
                     <div class="col-md-4 mb-2 mx-auto">
                         <label class="form-label" for="parecer_tecnico">Parecer técnico atual</label>
-                        <textarea rows="3" name="parecer_tecnico" class="form-control" id="parecer_tecnico" placeholder="Digite o status atual do atendimento e/ou a solução do problema">{{ old('parecer_tecnico') }}</textarea>
+                        <textarea rows="3" name="parecer_tecnico" class="form-control" id="parecer_tecnico" placeholder="Digite o status atual do atendimento e/ou a solução do problema">{{ $chamado->parecer_tecnico }}</textarea>
                     </div>
 
                     <div class="col-md-4 mb-2">
@@ -86,8 +86,15 @@
                     </div>
                     <hr>
                 
+                    <div class="row">
+                        <div class="col-md-1 mb-2">
+                            <a href="{{ route('service-desk.index') }}" class="btn btn-danger btn-block">Cancelar</a>
+                        </div>
+                        <div class="col-md-1 mb-2">
+                            <button type="submit" class="btn btn-success btn-block">Atualizar</button>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary btn-sm mt-3 col-md-2">Atualizar</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -36,9 +36,20 @@ class ServiceDeskController extends Controller
         $users = $this->user->all();
         $sectors = $this->sector->all();
         $tecnicos = $this->tecnico->all();
-        $chamados = $this->chamado->getChamados(auth()->user(), $request->search ?? '');
+        $chamadosAbertos = $this->chamado->getChamados(auth()
+                            ->user(), $request->search ?? '', 'Aberto')
+                            ->paginate(10);
+        $chamadosEmAtendimento = $this->chamado->getChamados(auth()
+                            ->user(), $request->search ?? '', 'Em Atendimento')
+                            ->paginate(10);
+        $chamadosResolvidos = $this->chamado->getChamados(auth()
+                            ->user(), $request->search ?? '', 'Resolvido')
+                            ->paginate(10);
+        $chamadosFechados = $this->chamado->getChamados(auth()
+                            ->user(), $request->search ?? '', 'Fechado')
+                            ->paginate(10);
   
-        return view('service-desk.index', compact('users', 'sectors', 'tecnicos', 'chamados'));
+        return view('service-desk.index', compact('users', 'sectors', 'tecnicos', 'chamadosAbertos', 'chamadosEmAtendimento', 'chamadosResolvidos', 'chamadosFechados'));
     }
     
     public function create()

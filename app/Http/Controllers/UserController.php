@@ -45,7 +45,7 @@ class UserController extends Controller
         $user->sector()->associate($request->sector_id);
         $user->save();
         
-        return redirect()->route('users.index')->with('success', 'Usuário registrado com sucesso!');
+        return redirect()->route('users.index')->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     public function show($login)
@@ -75,23 +75,17 @@ class UserController extends Controller
         $data['name'] = $request->name;
         $data['sector_id'] = $request->sector_id;
         $data['email'] = $request->email;
-        if ($request->has('password')) {
-            $data['password'] = Hash::make($request->password);
+        $data['admin'] = $request->is_admin;
+        if ($request->has('password') && $request->password != '') {
+            $data['password'] = bcrypt($request->password);
         }
 
         $data['admin'] = $request->admin;
 
         $user->update($data);
-        // $user['password'] = bcrypt($request->password);
-        // $user->update($request->only([
-        //     'name',
-        //     'password',
-        //     'sector_id',           
-        //     'admin',
-        // ]));
         
-        // $user->sector()->associate($request->sector_id);
-        // $user->save();
+        $user->sector()->associate($request->sector_id);
+        $user->save();
         
         return redirect()->route('users.index')->with('success', 'Usuário atualizado com sucesso!');
     }

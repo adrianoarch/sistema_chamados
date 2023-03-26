@@ -137,6 +137,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email' => [
+            'valid_email_domain' => 'O domínio do e-mail não é válido.',
+        ]
     ],
 
     /*

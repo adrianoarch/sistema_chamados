@@ -51,7 +51,7 @@ class Chamado extends Model implements ShouldQueue
         return $this->user->email;
     }
 
-    public function getChamados($user, string $search = null)
+    public function getChamados($user, string $search = null, string $status = '')
     {
         $query = $this->newQuery();
 
@@ -61,6 +61,9 @@ class Chamado extends Model implements ShouldQueue
             $query = $this->ofUser($user);
         }
         // dd($user);
+        if ($status) {
+            $query->where('status', $status);
+        }
         
         if ($search) {
             $query = $query->where('status', '!=', 'Fechado')
@@ -74,9 +77,9 @@ class Chamado extends Model implements ShouldQueue
             });
         }
 
-        $chamados = $query->get();
+        // $chamados = $query->get();
 
-        return $chamados;
+        return $query;
     }
 
     public function sendNotification()
